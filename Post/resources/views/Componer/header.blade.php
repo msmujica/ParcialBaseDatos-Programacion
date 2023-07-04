@@ -23,6 +23,18 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/register">Mamon</a>
                   </li>
+
+                    @if(Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link ">Welcome {{ Auth::user()->name}}.</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    @else 
+                        <a class="btn btn-primary" href="/login">Login</a>
+
+                    @endif
                 </ul>
                 
               </div>

@@ -22,4 +22,11 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/login',  function(){  
+    return view('login');
+
+});
+
 Route::post('/register',[UserController::class,"Register"]);
+Route::post('/login',[UserController::class,"Login"]);
+Route::get('/logout',[UserController::class,"Logout"]);
