@@ -23,8 +23,7 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/register">Mamon</a>
                   </li>
-
-                    @if(Auth::check())
+                  @if(Auth::check())
                     <li class="nav-item">
                         <a class="nav-link ">Welcome {{ Auth::user()->name}}.</a>
                     </li>

@@ -1,9 +1,9 @@
 @include("Componer/header")
- 
+
 <br><br>
 
 
-    
+
 <div class="row">
 
     <form action="/login" method="post">
@@ -23,25 +23,10 @@
         <button type="submit" class="btn btn-primary mb-3">Login</button>
     </div>
 
-    </form>
-
-    @if(session("created"))
-        <div class="alert alert-success">
-            User created
-        </div>
-    @endif
-
-    @if(session("logout"))
-    <div class="alert alert-warning">
-        User logged out
-    </div>
-    @endif
-
     @if(session("failed"))
         <div class="alert alert-danger">
             Invalid credentials
         </div>
     @endif
 
-   
-@include("Componer/footer");
+    </form>
