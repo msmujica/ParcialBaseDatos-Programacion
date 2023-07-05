@@ -45,13 +45,8 @@
         @endforeach
 
     </table>
-<<<<<<< HEAD
     <div class="mt-8" >
     {{ $post -> links() }}
-=======
-    <div>
-        {{ $post -> links() }}
->>>>>>> 521f9f0b14c7df32fcb745d55e70f06410aabe30
     </div>
 </div>
 
