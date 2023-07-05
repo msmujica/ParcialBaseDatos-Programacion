@@ -35,6 +35,15 @@ Route::get('/CrearPost', function () {return view('CrearPost');})
 Route::post('/CrearPost',[PostController::class,"Insertar"])
     ->middleware(Autenticacion::class);
 
+Route::get('/ListarPost',[PostController::class,"Listar"])->middleware(Autenticacion::class);
+Route::get('/listarMisPosts',[PostController::class, "listarPostPorUsuario"])->middleware(Autenticacion::class);
+
+
+Route::get('/eliminarPost/{d}', [PostController::class,'Eliminar']);
+Route::get('/modificarPost/{d}', [PostController::class,'CargarFormularioDeModificacion']);
+Route::post('/modificarPost',[PostController::class,"Modificar"]);
+
+
 
 Route::post('/register',[UserController::class,"Register"]);
 Route::post('/login',[UserController::class,"Login"]);

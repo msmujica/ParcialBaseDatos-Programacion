@@ -18,6 +18,8 @@ class Posts extends Migration
             $table->string("Titulo");
             $table->string("Cuerpo");
             $table->string("Autor");
+            $table->unsignedBigInteger('id_Autor');
+            $table->foreign("id_Autor")->references("id")->on("users");
             $table->softDeletes();
             $table->timestamps();
         });

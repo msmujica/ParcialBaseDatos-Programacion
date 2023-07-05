@@ -33,6 +33,12 @@
                     <li class="nav-item">
                          <a class="nav-link" href="/CrearPost">Crear Post</a>
                     </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="/ListarPost">Posts</a>
+                    </li>
+                    <div class="nav-item">
+                      <a class="nav-link" href="/listarMisPosts">Mis posts</a>
+                    </div>
                     @else 
                         <a class="btn btn-primary" href="/login">Login</a>
 
