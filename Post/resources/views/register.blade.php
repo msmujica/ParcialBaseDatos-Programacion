@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+@include("Common/header")
 <form action="/register" method="post">
         @csrf
     <div class="mb-3">

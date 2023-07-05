@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Http\Middleware\Autenticacion;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +28,13 @@ Route::get('/login',  function(){
     return view('login');
 
 });
+
+Route::get('/CrearPost', function () {return view('CrearPost');})
+    ->middleware(Autenticacion::class);
+
+Route::post('/CrearPost',[PostController::class,"Insertar"])
+    ->middleware(Autenticacion::class);
+
 
 Route::post('/register',[UserController::class,"Register"]);
 Route::post('/login',[UserController::class,"Login"]);

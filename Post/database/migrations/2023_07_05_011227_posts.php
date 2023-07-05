@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Pepe extends Migration
+class Posts extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,14 @@ class Pepe extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('posts', function(Blueprint $table){
+            $table->id();
+            $table->string("Titulo");
+            $table->string("Cuerpo");
+            $table->string("Autor");
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class Pepe extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('post');
     }
 }

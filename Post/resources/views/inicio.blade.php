@@ -1,4 +1,4 @@
-@include("Componer/header")
+@include("Common/header")
           
         <h1>Holi</h1>
 

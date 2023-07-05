@@ -21,7 +21,7 @@
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/register">Mamon</a>
+                    <a class="nav-link active" aria-current="page" href="/register">Registrarse</a>
                   </li>
                   @if(Auth::check())
                     <li class="nav-item">
@@ -29,6 +29,9 @@
                     </li>
                     <li class="nav-item">
                          <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="/CrearPost">Crear Post</a>
                     </li>
                     @else 
                         <a class="btn btn-primary" href="/login">Login</a>
