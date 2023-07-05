@@ -24,9 +24,7 @@ class PostController extends Controller
 
     public function Listar(Request $request){
 
-        return view("listarPost",[ 
-            'post' => Post::all()
-        ]);
+        return view("listarPost",[ 'post' => Post::paginate(3)]);
 
     }
 

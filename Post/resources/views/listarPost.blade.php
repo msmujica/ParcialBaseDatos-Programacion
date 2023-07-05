@@ -45,6 +45,9 @@
         @endforeach
 
     </table>
+    <div>
+        {{ $post -> links() }}
+    </div>
 </div>
 
    
