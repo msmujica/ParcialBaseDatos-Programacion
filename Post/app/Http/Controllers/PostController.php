@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
-
 class PostController extends Controller
 {
     public function Insertar(Request $request){
@@ -18,36 +17,25 @@ class PostController extends Controller
         $p -> id_Autor = Auth::user()->id;
         $p -> save();
 
-
         return redirect("/CrearPost")->with("Creado",true);
     }
-
+    
     public function Listar(Request $request){
 
-
         return view("listarPost",['post' => Post::paginate(3)]);
-
     }
 
     public function listarPostPorUsuario(Request $request) {
-
         $usuario = Auth::user();
-        
         $posts = $usuario->posts;
-
         return view("listarPostUsuario",['post' => $posts]);
-
     }
-
 
     public function Eliminar(Request $request, $idPost){
         $post = Post::findOrFail($idPost);
         $post -> delete();
 
         return redirect("/ListarPost")->with("modificado",true);
-
-       
-
     }
 
     public function CargarFormularioDeModificacion(Request $request, $idPost){
@@ -60,7 +48,6 @@ class PostController extends Controller
     public function Modificar(Request $request){
         $post = Post::find($request -> post("id"));
         
-        
         $post -> Titulo = $request -> post("Titulo");
         $post -> Cuerpo = $request -> post("Cuerpo");
         $post -> Autor = $request -> post("Autor");
@@ -68,12 +55,5 @@ class PostController extends Controller
         $post -> save();
 
         return redirect("/ListarPost")->with("modificado",true);
-
-        
-
     }
-    
-
-
-
 }
