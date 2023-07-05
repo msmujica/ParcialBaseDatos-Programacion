@@ -24,9 +24,8 @@ class PostController extends Controller
 
     public function Listar(Request $request){
 
-        return view("listarPost",[ 
-            'post' => Post::all()
-        ]);
+
+        return view("listarPost",['post' => Post::paginate(3)]);
 
     }
 
@@ -43,11 +42,6 @@ class PostController extends Controller
 
     public function Eliminar(Request $request, $idPost){
         $post = Post::findOrFail($idPost);
-
-        if ($post->id_Autor != Auth::id()) {
-            return redirect()->back()->with('error', 'No tienes permiso para editar este post.');
-        }
-        
         $post -> delete();
 
         return redirect("/ListarPost")->with("modificado",true);
@@ -66,10 +60,7 @@ class PostController extends Controller
     public function Modificar(Request $request){
         $post = Post::find($request -> post("id"));
         
-        if ($post -> id_Autor != Auth::id()) {
-            return redirect()->back()->with('error', 'No tienes permiso para eliminar este post.');
-        }
-
+        
         $post -> Titulo = $request -> post("Titulo");
         $post -> Cuerpo = $request -> post("Cuerpo");
         $post -> Autor = $request -> post("Autor");

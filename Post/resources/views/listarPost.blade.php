@@ -45,6 +45,9 @@
         @endforeach
 
     </table>
+    <div class="mt-8" >
+    {{ $post -> links() }}
+    </div>
 </div>
 
    
