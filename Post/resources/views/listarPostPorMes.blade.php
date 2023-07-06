@@ -1,7 +1,9 @@
 @include("common/header")
  
 <br><br>
-<h2>Posts</h2>
+@foreach ($post as $elemento)
+<h2>{{ $elemento->created_at->format('F') }}</h2>
+@endforeach
 <div class="container">
 <div class="row">
 
@@ -17,8 +19,8 @@
                 Autor
             </th>
         </tr>
+     
         @foreach($post as $elemento)
-
             <tr>
                 <td>
                     {{ $elemento -> Titulo }}
@@ -38,9 +40,6 @@
 
                     <a href="/eliminarPost/{{ $elemento -> id }}">Eliminar</a> 
                     <a href="/modificarPost/{{ $elemento -> id }}">Modificar</a> 
-                    <p>
-                     <a href="{{ route('posts.filtrarPorMes', ['mes' => $elemento->created_at->format('F')]) }}">Mes: {{ $elemento->created_at->format('F') }}</a>    
-                    </p>
                 </td>
                 </tr>
             @endif

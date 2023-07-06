@@ -43,6 +43,7 @@ Route::get('/eliminarPost/{d}', [PostController::class,'Eliminar']);
 Route::get('/modificarPost/{d}', [PostController::class,'CargarFormularioDeModificacion']);
 Route::post('/modificarPost',[PostController::class,"Modificar"]);
 
+Route::get('/posts/{mes}', [PostController::class,"filtrarPorMes"])->name('posts.filtrarPorMes');
 
 
 Route::post('/register',[UserController::class,"Register"]);
