@@ -1,8 +1,8 @@
 @include("Common/header")
           
-        <h1>Holi</h1>
+    <h1>Holi</h1>
 
-        @if(session("created"))
+    @if(session("created"))
         <div class="alert alert-success">
             User created
         </div>

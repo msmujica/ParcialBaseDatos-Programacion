@@ -13,8 +13,5 @@
         <b>Post Modificado</b>
     @endif
 
-
-
-
 </body>
 </html>

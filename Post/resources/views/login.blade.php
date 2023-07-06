@@ -2,8 +2,6 @@
 
 <br><br>
 
-
-
 <div class="row">
 
     <form action="/login" method="post">

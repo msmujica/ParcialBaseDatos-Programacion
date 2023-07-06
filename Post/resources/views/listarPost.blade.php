@@ -18,7 +18,6 @@
             </th>
         </tr>
         @foreach($post as $elemento)
-
             <tr>
                 <td>
                     {{ $elemento -> Titulo }}
@@ -30,19 +29,16 @@
                     {{ $elemento -> Autor }}
                 </td>
                 <td>
-                    {{ $elemento -> created_at }}
+                <a href="{{ route('posts.filtrarPorMes', ['mes' => $elemento->created_at->format('F')]) }}">{{ $elemento -> created_at }}</a>
+                    
                 </td>
                 <td>
-
             @if ($elemento->id_Autor == Auth::user()->id)
 
                     <a href="/eliminarPost/{{ $elemento -> id }}">Eliminar</a> 
                     <a href="/modificarPost/{{ $elemento -> id }}">Modificar</a> 
-                    <p>
-                     <a href="{{ route('posts.filtrarPorMes', ['mes' => $elemento->created_at->format('F')]) }}">Mes: {{ $elemento->created_at->format('F') }}</a>    
-                    </p>
                 </td>
-                </tr>
+            </tr>
             @endif
         @endforeach
 
@@ -51,6 +47,5 @@
     {{ $post -> links() }}
     </div>
 </div>
-
    
 @include("common/footer");

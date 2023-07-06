@@ -15,14 +15,14 @@
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Cuerpo</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" name="Cuerpo">
-            </div>
+        </div>
         
         <div class="mb-3">
             <button type="submit" class="btn btn-primary mb-3">Guardar</button>
 
         </div>
     </form>
-</div>
+
 
     @if(session("creado"))
         <div class="alert alert-success">

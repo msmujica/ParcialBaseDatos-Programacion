@@ -43,8 +43,7 @@
                         <a class="btn btn-primary" href="/login">Login</a>
 
                     @endif
-                </ul>
-                
+                </ul>     
               </div>
             </div>
           </nav>
