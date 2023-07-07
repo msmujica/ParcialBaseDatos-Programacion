@@ -23,7 +23,7 @@ class UserController extends Controller
     public function Login(Request $request){
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) 
-            return redirect("/");
+            return redirect("/listarMisPosts")->with("logued",true);
         return redirect("/login")->with("failed",true);
     }
 

@@ -17,16 +17,11 @@ use App\Http\Middleware\Autenticacion;
 */
 
 Route::get('/', function () {
-    return view('inicio');
+    return view('login');
 });
 
 Route::get('/register', function () {
     return view('register');
-});
-
-Route::get('/login',  function(){  
-    return view('login');
-
 });
 
 Route::get('/CrearPost', function () {return view('CrearPost');})
@@ -35,17 +30,22 @@ Route::get('/CrearPost', function () {return view('CrearPost');})
 Route::post('/CrearPost',[PostController::class,"Insertar"])
     ->middleware(Autenticacion::class);
 
-Route::get('/ListarPost',[PostController::class,"Listar"])->middleware(Autenticacion::class);
-Route::get('/listarMisPosts',[PostController::class, "listarPostPorUsuario"])->middleware(Autenticacion::class);
+Route::get('/ListarPost',[PostController::class,"Listar"])
+    ->middleware(Autenticacion::class);
 
+Route::get('/listarMisPosts',[PostController::class, "listarPostPorUsuario"])
+    ->middleware(Autenticacion::class);
+Route::get('/modificarPost/{d}', [PostController::class,'CargarFormularioDeModificacion'])
+    ->middleware(Autenticacion::class);
+Route::get('/posts/{mes}', [PostController::class,"filtrarPorMes"])->name('posts.filtrarPorMes')
+    ->middleware(Autenticacion::class);
 
 Route::get('/eliminarPost/{d}', [PostController::class,'Eliminar']);
-Route::get('/modificarPost/{d}', [PostController::class,'CargarFormularioDeModificacion']);
+
 Route::post('/modificarPost',[PostController::class,"Modificar"]);
 
-Route::get('/posts/{mes}', [PostController::class,"filtrarPorMes"])->name('posts.filtrarPorMes');
-
-
 Route::post('/register',[UserController::class,"Register"]);
+
 Route::post('/login',[UserController::class,"Login"]);
+
 Route::get('/logout',[UserController::class,"Logout"]);
