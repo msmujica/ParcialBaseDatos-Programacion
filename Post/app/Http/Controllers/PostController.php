@@ -29,10 +29,7 @@ class PostController extends Controller
     }
 
     public function listarPostPorUsuario(Request $request) {
-        $usuario = Auth::user();  
-        $posts = $usuario->posts;
-        
-        return view("listarPostUsuario",['post' => $posts]);
+        return view("listarPostUsuario",['post' => Auth::user()->posts->toQuery()->paginate(3)]);
     }
 
 

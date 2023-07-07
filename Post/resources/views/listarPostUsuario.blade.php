@@ -25,6 +25,10 @@
     </div>
 </div>
 
-
+    <center>
+        <div class="col-sm-2" style="margin-top:30px;">
+            {{ $post -> links() }}
+        </div>
+    </center>
    
 @include("common/footer");
