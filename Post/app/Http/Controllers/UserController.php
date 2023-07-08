@@ -39,14 +39,19 @@ class UserController extends Controller{
     public function ValidarFormularioRegistro($request){
         $request->validate([
             'username' => ['required'],
-            'email' => ['required', 'unique:users'],
-            'password' => ['required'],
+            'email' => ['required', 'unique:users', 'email'],
+            'password' => ['required', 'confirmed', 'max:24', 'min:6'],
+            'password_confirmation' => ['required'],
         ],[
             'username.required' => 'Porfavor Ingrese Usuario',
             'email.required' => 'Porfavor Ingrese Email',
             'email.unique' => 'El Email Ya Esta Registrado.',
+            'email.email' => 'El Email No Cumple.',
             'password.required' => 'Porfavor Ingrese Contraseña',
             'password.confirmed' => 'La Contraseña No Es Igual',
+            'password.max' => 'La Contraseña Tiene Mas De 24 Caracteres',
+            'password.min' => 'La Contraseña Tiene Menos De 6 Caracteres',
+            'password_confirmation.required' => 'Porfavor Ingrese Contraseña',
         ]);
     }
 }

@@ -46,8 +46,13 @@
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Confirmar Password</label>
-            <input type="password" class="form-control" id="exampleFormControlInput1" name="password-confirmed">
-            @error('password-confirmation')
+            <input type="password" class="form-control" id="exampleFormControlInput1" name="password_confirmation">
+            @error('password_confirmation')
+            <div class="alert alert-warning">
+                {{ $message }}
+            </div>
+            @enderror
+            @error('password')
             <div class="alert alert-warning">
                 {{ $message }}
             </div>
