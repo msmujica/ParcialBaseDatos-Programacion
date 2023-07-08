@@ -11,19 +11,7 @@ use Illuminate\Validation\Rules;
 class UserController extends Controller{
 
     public function Register(Request $request){
-        $request->validate([
-            'username' => ['required'],
-            'email' => ['required', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'password-confirmation' => ['required']
-        ],[
-            'username.required' => 'Porfavor Ingrese Usuario',
-            'email.required' => 'Porfavor Ingrese Email',
-            'email.unique' => 'El email Ya Esta Registrado.',
-            'password.required' => 'Porfavor Ingrese Contraseña',
-            'password.confirmed' => 'La Contraseña No Es Igual',
-            'password-confirmation.required' => 'Porfavor Ingrese Contraseña'
-        ]);
+        $this->ValidarFormularioRegistro($request);
 
         $u = new User();
 
@@ -46,5 +34,19 @@ class UserController extends Controller{
     public function Logout(Request $request){
         Auth::logout();
         return redirect("/")->with("logout",true);
+    }
+
+    public function ValidarFormularioRegistro($request){
+        $request->validate([
+            'username' => ['required'],
+            'email' => ['required', 'unique:users'],
+            'password' => ['required'],
+        ],[
+            'username.required' => 'Porfavor Ingrese Usuario',
+            'email.required' => 'Porfavor Ingrese Email',
+            'email.unique' => 'El Email Ya Esta Registrado.',
+            'password.required' => 'Porfavor Ingrese Contraseña',
+            'password.confirmed' => 'La Contraseña No Es Igual',
+        ]);
     }
 }

@@ -12,13 +12,7 @@ use Carbon\Carbon;
 class PostController extends Controller
 {
     public function Insertar(Request $request){
-        $request->validate([
-            'Titulo' => ['required'],
-            'Cuerpo' => ['required'],
-        ],[
-            'Titulo.required' => 'Porfavor Ingrese Usuario',
-            'Cuerpo.required' => 'Porfavor Ingrese Email',
-        ]);
+        $this->ValidarFormularioInsertar($request);
 
         $p = new Post();
         $p -> Titulo = $request -> post("Titulo");
@@ -55,13 +49,7 @@ class PostController extends Controller
     }
 
     public function Modificar(Request $request){
-        $request->validate([
-            'Titulo' => ['required'],
-            'Cuerpo' => ['required'],
-        ],[
-            'Titulo.required' => 'Porfavor Ingrese Titulo',
-            'Cuerpo.required' => 'Porfavor Ingrese Cuerpo',
-        ]);
+        $this -> ValidarFormularioModificacion($request);
 
         $post = Post::find($request -> post("id"));
         $post -> Titulo = $request -> post("Titulo");
@@ -77,5 +65,25 @@ class PostController extends Controller
     $post = Post::whereMonth('created_at', '=', Carbon::parse($mes)->month)->paginate(3);
 
     return view('listarPostPorMes', [ "post" => $post ]);
+    }
+
+    public function ValidarFormularioModificacion($request){
+        $request->validate([
+            'Titulo' => ['required'],
+            'Cuerpo' => ['required'],
+        ],[
+            'Titulo.required' => 'Porfavor Ingrese Titulo',
+            'Cuerpo.required' => 'Porfavor Ingrese Cuerpo',
+        ]);
+    }
+
+    public function ValidarFormularioInsertar($request){
+        $request->validate([
+            'Titulo' => ['required'],
+            'Cuerpo' => ['required'],
+        ],[
+            'Titulo.required' => 'Porfavor Ingrese Titulo',
+            'Cuerpo.required' => 'Porfavor Ingrese Cuerpo',
+        ]);
     }
 }

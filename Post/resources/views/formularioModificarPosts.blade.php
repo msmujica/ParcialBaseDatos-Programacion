@@ -6,11 +6,12 @@
 <div class="container" style="margin-top: 50px">
     <div class="row">
 
-        <form action="/CrearPost" method="post">
+        <form action="/modificarPost" method="post">
             @csrf
+            <input type="hidden" name="id" id="" value={{ $post -> id }}> <br>
             <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Titulo</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="Titulo">
+            <input type="text" class="form-control" id="exampleFormControlInput1"  name="Titulo" value=' {{ $post -> Titulo }} '>
             @error('Titulo')
             <div class="alert alert-warning">
                 {{ $message }}
@@ -20,7 +21,7 @@
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Cuerpo</label>
-                <input type="text-area" class="form-control" id="exampleFormControlInput1" name="Cuerpo">
+                <input type="text-area" class="form-control" id="exampleFormControlInput1" name="Cuerpo" value=' {{ $post -> Cuerpo }} '>
                 @error('Cuerpo')
                 <div class="alert alert-warning">
                     {{ $message }}
