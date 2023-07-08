@@ -1,12 +1,24 @@
 @include("common/header")
  
 <br><br>
-@if(session("logued"))
+<center>
+    <h1 style="margin-top:50px">Mis Posts</h1>
+</center>
+    @if(session("logued"))
         <div class="alert alert-success">
             Logueado Satisfactoriamente.
         </div>
     @endif
-<h2>Posts</h2>
+    @if(session("modificado"))
+    <div class="alert alert-success">
+            Post Modificado 
+        </div>
+    @endif
+    @if(session("eliminado"))
+    <div class="alert alert-success">
+            Post Eliminado
+        </div>
+    @endif
 <div class="container-fluid">
     <div class="row">
     @auth

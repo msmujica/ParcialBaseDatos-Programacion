@@ -12,8 +12,15 @@ use Carbon\Carbon;
 class PostController extends Controller
 {
     public function Insertar(Request $request){
-        $p = new Post();
+        $request->validate([
+            'Titulo' => ['required'],
+            'Cuerpo' => ['required'],
+        ],[
+            'Titulo.required' => 'Porfavor Ingrese Usuario',
+            'Cuerpo.required' => 'Porfavor Ingrese Email',
+        ]);
 
+        $p = new Post();
         $p -> Titulo = $request -> post("Titulo");
         $p -> Cuerpo = $request -> post("Cuerpo");
         $p -> Autor = Auth::user()->name;
@@ -37,7 +44,7 @@ class PostController extends Controller
         $post = Post::findOrFail($idPost);
         $post -> delete();
 
-        return redirect("/ListarPost")->with("modificado",true);
+        return redirect("/listarMisPosts")->with("eliminado",true);
     }
 
     public function CargarFormularioDeModificacion(Request $request, $idPost){
@@ -48,15 +55,22 @@ class PostController extends Controller
     }
 
     public function Modificar(Request $request){
+        $request->validate([
+            'Titulo' => ['required'],
+            'Cuerpo' => ['required'],
+        ],[
+            'Titulo.required' => 'Porfavor Ingrese Titulo',
+            'Cuerpo.required' => 'Porfavor Ingrese Cuerpo',
+        ]);
+
         $post = Post::find($request -> post("id"));
-         
         $post -> Titulo = $request -> post("Titulo");
         $post -> Cuerpo = $request -> post("Cuerpo");
-        $post -> Autor = $request -> post("Autor");
+        $post -> Autor = Auth::user()->name;
 
         $post -> save();
 
-        return redirect("/ListarPost")->with("modificado",true); 
+        return redirect("/listarMisPosts")->with("modificado",true); 
     }
 
     public function filtrarPorMes($mes){

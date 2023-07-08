@@ -11,16 +11,25 @@
             <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Titulo</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" name="Titulo">
+            @error('Titulo')
+            <div class="alert alert-warning">
+                {{ $message }}
+            </div>
+            @enderror
             </div>
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Cuerpo</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="Cuerpo">
+                @error('Cuerpo')
+            <div class="alert alert-warning">
+                {{ $message }}
+            </div>
+            @enderror
             </div>
             
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary mb-3">Guardar</button>
-
             </div>
         </form>
 

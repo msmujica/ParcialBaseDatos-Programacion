@@ -15,23 +15,43 @@
     <form action="/register" method="post">
             @csrf
         <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Username</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="username">
+            <label for="exampleFormControlInput1" class="form-label">Username</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="username" >
+            @error('username')
+                <div class="alert alert-warning">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" name="email">
+            @error('email')
+            <div class="alert alert-warning">
+                {{ $message }}
+            </div>
+            @enderror
             </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Password</label>
             <input type="password" class="form-control" id="exampleFormControlInput1" name="password">
+            @error('password')
+            <div class="alert alert-warning">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Password Confirmation</label>
+            <label for="exampleFormControlInput1" class="form-label">Confirmar Password</label>
             <input type="password" class="form-control" id="exampleFormControlInput1" name="password-confirmation">
+            @error('password-confirmation')
+            <div class="alert alert-warning">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
 
         <div class="mb-3">

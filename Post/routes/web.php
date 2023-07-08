@@ -40,9 +40,11 @@ Route::get('/modificarPost/{d}', [PostController::class,'CargarFormularioDeModif
 Route::get('/posts/{mes}', [PostController::class,"filtrarPorMes"])->name('posts.filtrarPorMes')
     ->middleware(Autenticacion::class);
 
-Route::get('/eliminarPost/{d}', [PostController::class,'Eliminar']);
+Route::get('/eliminarPost/{d}', [PostController::class,'Eliminar'])
+    ->middleware(Autenticacion::class);
 
-Route::post('/modificarPost',[PostController::class,"Modificar"]);
+Route::post('/modificarPost',[PostController::class,"Modificar"])
+    ->middleware(Autenticacion::class);
 
 Route::post('/register',[UserController::class,"Register"]);
 
